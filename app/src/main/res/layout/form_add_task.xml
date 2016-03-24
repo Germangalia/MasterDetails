@@ -11,59 +11,39 @@
         android:layout_height="48dp"
         android:inputType="textCapSentences"
         android:maxLines="1"
-        android:hint="Nombre tarea"/>
-
-    <!--- Priority -->
+        android:hint="Task Name"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:text="Prioridad:" />
+        android:paddingBottom="5dp"
+        android:text="Priority" />
 
     <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/task_priority"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <RadioButton android:id="@+id/priority_1"
+        <RadioButton android:id="@+id/task_priority_urgent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            android:text="Baja"/>
+            android:text="Urgent!"
+            android:buttonTint="#DF0101"/>
 
-        <RadioButton android:id="@+id/priority_2"
+        <RadioButton android:id="@+id/task_priority_important_not_urgent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            android:checked="true"
-            android:text="Normal"
-            />
+            android:text="Important but not Urgent"
+            android:buttonTint="#2E2EFE"
+            android:checked="true"/>
 
-        <RadioButton android:id="@+id/priority_3"
+        <RadioButton android:id="@+id/task_priority_not_urgent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            android:text="Alta"
-            />
+            android:text="Not Urgent"
+            android:buttonTint="#088A08"/>
 
     </RadioGroup>
-
-    <!--- Done -->
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:text="Finalizada:" />
-
-    <CheckBox android:id="@+id/task_done"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Si / No"
-        android:checked="false" />
-
 </LinearLayout>

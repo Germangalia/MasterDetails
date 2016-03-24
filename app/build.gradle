@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "german.ggalia84.masterdetails"
+        applicationId "com.ggalia84.masterdetails"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
