@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
-import com.ggalia84.masterdetails.dummy.DummyContent;
+import adam.dam2.iesebre.com.todolistmd.dummy.DummyContent;
 
 import java.util.List;
 
@@ -45,11 +45,20 @@ public class ItemListActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton fabrm = (FloatingActionButton) findViewById(R.id.fabremove);
+        fabrm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Remove", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+
+        FloatingActionButton fabadd = (FloatingActionButton) findViewById(R.id.fabadd);
+        fabadd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Add", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
