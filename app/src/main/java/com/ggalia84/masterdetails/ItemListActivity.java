@@ -38,8 +38,8 @@ import com.ggalia84.masterdetails.Models.TodoItem;
  */
 public class ItemListActivity extends AppCompatActivity {
 
-    private static final String SHARED_PREFERENCES_TODOS = "SP_TODOLIST_MD";
-    private static final String TODO_LIST = "todo_list_md";
+    public static final String SHARED_PREFERENCES_TODOS = "SP_TODOLIST_MD";
+    public static final String TODO_LIST = "todo_list_md";
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
      * device.
@@ -51,7 +51,7 @@ public class ItemListActivity extends AppCompatActivity {
     private String taskName;
     private String taskDescription;
     private int priority;
-    private Gson gson;
+    public static Gson gson;
     public static ListAdapter adapter;
     private SwipeRefreshLayout swipeContainer;
     private SharedPreferences todoSharedPreference;
@@ -80,7 +80,6 @@ public class ItemListActivity extends AppCompatActivity {
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
 
-        loadTasks();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -113,6 +112,12 @@ public class ItemListActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = todos.edit();
         editor.putString(TODO_LIST, tasksToSave);
         editor.apply();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        loadTasks();
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
@@ -165,12 +170,19 @@ public class ItemListActivity extends AppCompatActivity {
         swipeContainer.setRefreshing(false);
     }
 
-    private static void addItem(TodoItem item) {
+    public static void addItem(TodoItem item) {
         items.add(item);
         item_map.put(item.id, item);
+        adapter.notifyDataSetChanged();
     }
 
-    public void showAddForm(View view) {
+    public static void updateItem(String id, TodoItem item) {
+        item_map.remove(id);
+        item_map.put(item.id, item);
+        adapter.notifyDataSetChanged();
+    }
+
+    public void addTask(View view) {
 
         taskName = " ";
         taskDescription = " ";
@@ -207,7 +219,6 @@ public class ItemListActivity extends AppCompatActivity {
                         }
                         final TodoItem todoItem = new TodoItem(taskName + taskDescription, taskName, false, priority, taskDescription);
                         addItem(todoItem);
-                        adapter.notifyDataSetChanged();
                     }
                 }).
 
